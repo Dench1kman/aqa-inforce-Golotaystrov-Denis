@@ -13,18 +13,18 @@ This project contains UI automation tests for [https://automationintesting.onlin
 
 ## ▶️ How to Run the Tests
 
-/**
- * Important:
- * The automated tests interact with the real UI of the website,
- * where room data (availability, types, status) depends on the admin panel.
- *
- * Before running the tests, make sure that:
- * - No one is modifying room information, bookings, or dates in the admin panel;
- * - Required rooms for the tests (e.g., "Single") exist and are available;
- * - Test bookings are not being manually deleted during test execution.
- *
- * Otherwise, tests may behave unpredictably or fail.
- */
+<!--
+ Important:
+   The automated tests interact with the real UI of the website,
+   where room data (availability, types, status) depends on the admin panel.
+ 
+   Before running the tests, make sure that:
+   - No one is modifying room information, bookings, or dates in the admin panel;
+   - Required rooms for the tests (e.g., "Single") exist and are available;
+   - Test bookings are not being manually deleted during test execution.
+  
+   Otherwise, tests may behave unpredictably or fail.
+  -->
 
 ### 1. Clone the Repository
 git clone <your-repo-url>
