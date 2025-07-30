@@ -1,0 +1,139 @@
+
+
+						- - - - - TEST CASES - - - - -
+
+
+✅ TC001 - Room can be booked with valid data
+
+Preconditions: 
+   Open https://automationintesting.online/
+   Rooms are available for booking
+
+Test Steps:
+   1.Scroll to “Check Availability & Book Your Stay”
+   2.Set today's date in "Check In" (e.g.2025-07-30)
+   3.Set the date for the day after tomorrow in "Check Out" (e.g.2025-07-31)
+   4.Click on “Check Availability”
+   5.Scroll down to “Our Rooms” section
+   6.Click “Book now” for the “Single” room
+   7.In the “Book This Room” section, click “Today”
+   8.Click “Reserve Now”
+   9.Fill in form with:
+      - Firstname: John
+      - Lastname: Doe
+      - Email: test@test.com
+      - Phone: +38(012)3456789
+   10.Click “Reserve Now”
+
+Expected Result:
+   - “Booking Confirmed” message appears
+   - Correct booked dates are displayed (2025-07-30 – 2025-07-31)
+   - “Return home” button is shown
+   - Dates are shown as Unavailable on calendar
+
+
+- - -
+
+
+❌ TC002 — Booking with invalid date range (Check-Out before Check-In)		//BUG-REPORT-001 (500 Error)
+
+Preconditions:
+   Open https://automationintesting.online
+   Rooms are available for booking
+
+Test Steps:
+   1.Scroll to “Check Availability & Book Your Stay”
+   2.Set today's date in "Check In" (e.g.2025-07-30)
+   3.Set yesterday's date in "Check Out" (e.g.2025-07-29)
+   4.Click on “Check Availability”
+   5.Scroll down to “Our Rooms” section
+   6.Click “Book now” for the “Single” room
+   7.In the “Book This Room” section, click “Today”
+   8.Click “Reserve Now”
+   9.Fill in form with:
+      - Firstname: John
+      - Lastname: Doe
+      - Email: test@test.com
+      - Phone: +38(012)3456789
+   10.Click “Reserve Now”
+
+Expected Result:
+   - User should be prevented from booking a room if the date range is invalid
+   - Either the booking button is disabled, or a validation error appears
+   - No booking request is submitted to the server
+
+
+- - -
+
+
+❌ TC003 - Booking with empty form fields		//BUG-REPORT-002 (400 Error)
+
+Preconditions: 
+   Open https://automationintesting.online
+
+Test Steps:
+   1.Scroll to “Check Availability & Book Your Stay”
+   2.Set today's date in "Check In" (e.g.2025-07-30)
+   3.Set the date for the day after tomorrow in "Check Out" (e.g.2025-07-31)
+   4.Click on “Check Availability”
+   5.Scroll down to “Our Rooms” section
+   6.Click “Book now” for the “Single” room
+   7.In the “Book This Room” section, click “Today”
+   8.Click “Reserve Now”
+   9.Leave all fields empty
+   10.Click “Reserve Now”
+   
+Expected Result:
+   - The form should not be submitted
+   - No booking request is sent to the server
+
+
+- - -
+
+
+✅ TC004 — Verify that previously booked dates are marked as "Unavailable"
+
+Preconditions:
+   Open https://automationintesting.online
+   A room has already been successfully booked for e.g.2025-07-30 to 2025-07-31
+
+Test Steps:
+   1.Scroll to “Check Availability & Book Your Stay”
+   2.Set today's date in "Check In" (e.g.2025-07-30)
+   3.Set the date for the day after tomorrow in "Check Out" (e.g.2025-07-31)
+   4.Click on “Check Availability”
+   5.Scroll down to “Our Rooms” section
+   6.Look for the “Single” room card
+
+Expected Result:
+   - The "Single" room card should not appear (or should indicate it's unavailable) for those dates
+
+
+- - -
+
+
+❌ TC005 — Booking with same "Check-In" and "Check-Out" date 		//BUG-REPORT-003 (500 Error)
+
+Preconditions:
+   Open https://automationintesting.online
+
+Test Steps:
+   1.Scroll to “Check Availability & Book Your Stay”
+   2.Set today's date in "Check In" (e.g.2025-07-30)
+   3.Set the same date in "Check Out" (e.g.2025-07-30)
+   4.Click on “Check Availability”
+   5.Scroll down to “Our Rooms” section
+   6.Click “Book now” for the “Single” room
+   7.In the “Book This Room” section, click “Today”
+   8.Click “Reserve Now”
+   9.Fill in form with:
+      - Firstname: John
+      - Lastname: Doe
+      - Email: test@test.com
+      - Phone: +38(012)3456789
+   10.Click “Reserve Now”
+
+Expected Result:
+   - Booking should not proceed if the number of nights is zero
+   - User should receive a validation error (e.g., "Stay must be at least one night")
+
