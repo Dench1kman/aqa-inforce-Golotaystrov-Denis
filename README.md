@@ -6,7 +6,7 @@ This project contains UI automation tests for [https://automationintesting.onlin
 
 - **Test file**: `test/specs/test.e2e.js`
 - **Test cases**: Described in `test-cases.txt`
-- ""Framework**: WebdriverIO (standard setup)
+- **Framework**: WebdriverIO (standard setup)
 - **Editor**: [Visual Studio Code](https://code.visualstudio.com/)
 - **Scope**: **UI automation only** (API automation planned for the future)
 - **Manual testing**: Admin panel and API-related tasks were explored manually but not yet automated.
